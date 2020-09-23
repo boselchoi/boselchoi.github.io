@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Android webview local file</title>
+</head>
+    <body>
+        <p style="font-size:20pt;">This is web view</p>
+        <input id="inputField" class="buttonstyle" type="text" value="">
+        <br/>
+        <br/>
+        <input onClick="sendMessage()" class="buttonstyle" type="button" value="상품 구매하기"/>
+        <h1>ANDROIDRIDE</h1>
+        <p id="message_id">
+            This is a <strong>local html file</strong> loaded from <strong>assets</strong> folder
+        </p>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <script type="text/javascript">
+            function onSignIn(googleUser) {
+              var profile = googleUser.getBasicProfile();
+              console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+              console.log('Name: ' + profile.getName());
+              console.log('Image URL: ' + profile.getImageUrl());
+              console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+            }
+            function sendMessage() {
+                var valueReceived =  document.getElementById("inputField").value;
+                WebInterface.purchaseAnItem(valueReceived);
+            }
+            function show(message)
+            {
+                document.getElementById('message_id').innerHTML=message;
+                alert("hello world");
+            }
+        </script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <style type="text/css">
+            h1
+            {
+                border:2px solid #707cff;
+                padding:5px;
+                color:#707cff;
+                margin-top:120px;
+                text-align:center;
+                background-color:white;
+            }
+            p
+            {
+                text-align:center;
+            }
+            body
+            {
+                background-color:#e0e0e0;
+            }
+            .buttonstyle{
+                height:20px;
+                width:100px;
+                font-size:10pt;
+            }
+        </style>
+    </body>
+</html>
